@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuffy head robot</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/logview.js"></script>
+    <script src="../static/js/jquery.flot.js"></script>
+    <script src="../static/js/flot.time.js"></script>
+    <link rel="stylesheet" type="text/css" 
+          href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/logviewer.css">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/bootstrap-responsive.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>'Speed up yo shit' &mdash; A Dashboard</h1>
+      <h2>Instance Summary</h2>
+      <dl class="summary">
+        <dd>Handling <strong>{{ data.reqs_sec }} requests/second</strong>.</dd>
+        <dd>Average rendering time: <strong>{{ data.time_per_request}} seconds</strong>.</dd>
+        <dd>Should be able to handle <strong>{{ data.optimal_requests }} requests/sec</strong>.</dd>
+        <!-- put a warning color if more than 50%, error color if more than 75% -->
+        <dd>Current Capacity: <span class="text-info">{{ data.cc_percentage }}</span></dd>
+      </dl>
+      <h3>Slow Pages</h3>
+      <!-- ordered by average time to render, longest first -->
+      <ol class="url-details-list">
+        <li>
+          <dl class="url-details">
+            <dt class="url-help">
+              <a href="javascript:void(0);">/newscenter/inthenewsview</a>
+&rArr;
+              <span class="average-render-time text-error">{{ data.news }}</span>
+            </dt>
+
+            <dd>Overall server time spent rendering this page: <span  class="text-error">2453.00 seconds</span></dd>
+            <dd>Average time to render: 2.920</dd>
+            <dd>Num hits: 840 </dd>
+            <dd>If you cached this page as a middle man, you would save 0.0005% of server load</dd>
+            <dd>
+              <a href="http://www.engin.umich.edu/newscenter/inthenewsview">View in new window</a>
+            </dd>
+            <dd class="url-graph">
+              <p>A line graph history of the time to render these requests. Note that this is an image at the moment, but this will be converted to an imaging library.</p>
+              <div id="placeholder1" class="graph-placeholder" style="height:300px;">
+              </div>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt class="url-help">
+              <a href="">/departments/name</a>
+&rArr;
+              <span class="average-render-time text-warning">1.831 secs on average</span>
+            </dt>
+
+            <dd>Overall server time spent rendering this page: <span  class="text-warning">23.00 seconds</span></dd>
+            <dd>Average time to render: 1.831</dd>
+            <dd>Num hits: 840 </dd>
+            <dd>If you cached this page as a middle man, you would save 0.0005% of server load</dd>
+            <dd>
+              <a href="http://www.engin.umich.edu/newscenter/inthenewsview">View in new window</a>
+            </dd>
+          </dl>
+        </li>
+      </ol>
+      <h3>Server Chokers</h3>
+      <!-- ordered by Total Server Time, longest first -->
+      <ul>
+        <li>
+          <div class="url-help">
+            <a href="http://name.engin.umich.edu/departments/name/">name</a>
+          </div>
+          <p>Total time server spent rendering this page: 2453.00 seconds</p>
+          <p>Average time to render: 2.92023892857</p>
+          <p>Num hits: 840 </p>
+          <p>If you cached this page as a middle man, you would save 0.0005% of server load</p>
+        </li>
+      </ul>
+      <h3>Memory Hogs</h3>
+      <ul>
+        <li>
+          <div class="url-help">
+            <a href="http://www.engin.umich.edu/newscenter/newsreleases">newsreleases</a>
+          </div>
+          <p>Total time server spent rendering this page: 2453.00 seconds</p>
+          <p>Average time to render: 2.92023892857</p>
+          <p>Num hits: 840 </p>
+          <p>If you cached this page as a middle man, you would save 0.0005% of server load</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
