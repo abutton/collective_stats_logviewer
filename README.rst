@@ -1,3 +1,20 @@
+=======================
+Initialize the database
+=======================
+Step zero: make sure your repo is up to date
+
+Step one: (cd into collective_stats_logviewer) Type in your terminal:
+
+./bin/flask-ctl debug initdb
+
+=====================
+Initialize the server
+=====================
+Type in your terminal:
+
+./bin/flask-ctl debug fg
+
+
 =======
 Problem
 =======

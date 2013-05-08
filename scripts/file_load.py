@@ -6,7 +6,7 @@ class Loader(object):
 	def __init__(self):
 		self.name = "Ahmad"
 		self.api_key = "sdhufuserhfhrjf"
-		self.api = "a website"
+		self.api = "http://127.0.0.1:5000/super_url"
 		self.machine_name = "Terminator"
 		self.results = []
 

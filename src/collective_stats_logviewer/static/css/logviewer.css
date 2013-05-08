@@ -8,3 +8,8 @@ ol.url-details-list li{
 .url-graph {
 
 }
+
+.graph-placeholder {
+  width: 500px;
+  height: 300px; 
+}

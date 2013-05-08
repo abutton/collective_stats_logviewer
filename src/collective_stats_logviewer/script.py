@@ -42,7 +42,7 @@ def make_debug(global_conf={}, **conf):
 def make_shell():
     """Interactive Flask Shell"""
     from flask import request
-    from collective_stats_logviewer import init_db as initdb
+    from collective_stats_logviewer.model import init_db as initdb
     app = make_app()
     http = app.test_client()
     reqctx = app.test_request_context
@@ -50,7 +50,7 @@ def make_shell():
 
 def _init_db(debug=False, dry_run=False):
     """Initialize the database."""
-    from collective_stats_logviewer import init_db
+    from collective_stats_logviewer.model import init_db
     print 'init_db()'
     if dry_run:
         return
