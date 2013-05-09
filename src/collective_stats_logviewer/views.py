@@ -2,7 +2,8 @@ from flask import render_template
 from flask import Flask
 from flask import jsonify
 from flask import request
-from model import db
+import model
+
 
 class _DefaultSettings(object):
     USERNAME = 'world'
@@ -14,16 +15,16 @@ app = Flask(__name__)
 app.config.from_object(_DefaultSettings)
 del _DefaultSettings
 
-def init_db():
-    """ Initialize the database """
-    db.create_all()
+
+model.init_db()
+
 
 @app.route('/')
 @app.route('/index/')
 def index():
     """Renders the index pages of collective stats. Queries the db to pull
     overall server load stats, as well as basic stats for each offending url.
-    More detailed stats for each url are queried and served by 
+    More detailed stats for each url are queried and served by
     response_time_details() using an ajax request"""
 
     data_store = {}
@@ -43,7 +44,7 @@ def response_time_details():
     """Queries db for detailed stats for a specific url. This function is
     called from an ajax request, which sends the url as a GET request
     and returns a json object with details about rending time, num hits, etc
-    for that url. This also returns the data necessary to render the graph for 
+    for that url. This also returns the data necessary to render the graph for
     the url."""
 
     url = request.args.get('url', '')
@@ -62,4 +63,4 @@ def response_time_details():
 
     stats_data = {'overall': 42.77, 'num_hits': 14, 'cached_benefit': 1.0003, 'avg': 2.3}
     return jsonify(url=url, graph_data=graph_data, stats_data=stats_data)
-    
+

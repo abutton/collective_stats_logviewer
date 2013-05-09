@@ -1,6 +1,7 @@
 import datetime
 import re
-from collective_stats_logviewer.model import Log
+from model import db, Log
+from flask.ext.sqlalchemy import SQLAlchemy
 
 
 def do_it(file='log.log'):
@@ -30,5 +31,5 @@ def do_it(file='log.log'):
                         result['setstate_time'], result['total_object_loads'], result['object_loads_from_cache'], result['objects_modified'],
                         result['action'], result['url'], result['start_RSS'], result['end_RSS'])
                     
-                    session.add(l)
-                    session.commit()
+                    db.session.add(l)
+                    db.session.commit()

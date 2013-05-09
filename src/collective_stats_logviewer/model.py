@@ -1,15 +1,11 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, Float
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/stats.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///stats.db'
 db = SQLAlchemy(app)
-Base = declarative_base()
 
-def init_db():
-	db.create_all()
 
 class Log(db.Model):
     __tablename__ = "logs"
@@ -42,3 +38,7 @@ class Log(db.Model):
         self.url = url
         self.start_RSS = start_RSS
         self.end_RSS = end_RSS
+
+
+def init_db():
+    db.create_all()
