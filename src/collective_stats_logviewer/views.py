@@ -62,8 +62,9 @@ def response_time_details():
     total_hits = get_total_hits(url)
 
     graph_data = response_time_details
-
-    stats_data = {'overall': overall_time, 'num_hits': total_hits, 'cached_benefit': 1.0003, 'avg': 2.3}
+    stats_data = {'overall': "%.2f" % overall_time[0][0],
+                  'num_hits': total_hits,
+                  }
     return jsonify(url=url, graph_data=graph_data, stats_data=stats_data)
 
 @app.route('/super_url', methods=['POST'])
